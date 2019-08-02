@@ -15,9 +15,15 @@ public class DeviceOperator : MonoBehaviour
             // create array of coliders type lements
             //OverlapSphere return all object in range
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
-            foreach(Collider hitCollider in hitColliders)
+            
+            foreach (Collider hitCollider in hitColliders)
                 {
-                    hitCollider.SendMessage("Operate", SendMessageOptions.DontRequireReceiver); // опция делает так чтобы метод игнорировал тот факт что у большества объектов нет метода Operate
+                    Vector3 direction = hitCollider.transform.position - transform.position;
+                
+                    if (Vector3.Dot(direction, transform.forward) > .5f) {
+                        hitCollider.SendMessage("Operate", SendMessageOptions.DontRequireReceiver); // опция делает так чтобы метод игнорировал тот факт что у большества объектов нет метода Operate
+                    }
+
                 }
             
         }
