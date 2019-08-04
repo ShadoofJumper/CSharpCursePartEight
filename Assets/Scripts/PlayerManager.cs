@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour, IGameMnager
+public class PlayerManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 

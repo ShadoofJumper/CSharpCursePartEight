@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IGameMnager
+public interface IGameManager
 {
     ManagerStatus status { get; }
 

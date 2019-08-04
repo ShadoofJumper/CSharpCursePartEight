@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour, IGameMnager
+public class InventoryManager : MonoBehaviour, IGameManager
 {
     public ManagerStatus status { get; private set; }
 
