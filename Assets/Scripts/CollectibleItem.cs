@@ -8,7 +8,7 @@ public class CollectibleItem : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Itemcollect: " + itemName);
+        Manager.Inventory.AddItems(itemName);
         Destroy(this.gameObject);
     }
 }
