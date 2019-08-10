@@ -26,7 +26,7 @@ public class BasicUI : MonoBehaviour
             posX += width + buffer;
 
         }
-
+        /// code show equiped item
         string equipped = Manager.Inventory.equippedItem;
         if (equipped != null) // if have item
         {
@@ -37,19 +37,29 @@ public class BasicUI : MonoBehaviour
                 new GUIContent("Equipped", image));
         }
 
+        // code for show buttons for equpe
         posX = 10;
         posY += height + buffer;
 
         foreach (string item in itemList)// for all items, create buttons
         {
-            Debug.Log("Button x: "+ posX);
             if (GUI.Button(new Rect(posX, posY, width, height),"Equip"+item))
             {
                 Manager.Inventory.EquipeItem(item);//this code start on click button
             }
+            
+
+            if (item == "health")
+            {
+                if (GUI.Button(new Rect(posX, posY+height+buffer, width, height), "Use Health"))
+                {
+                    Manager.Inventory.ConsumeItems(item);
+                    Manager.Player.ChangeHealth(25);
+                }
+            }
+
             posX += width + buffer;
         }
-
 
     }
 

@@ -65,7 +65,27 @@ public class InventoryManager : MonoBehaviour, IGameManager
             Debug.Log("Equipped "+name);
             return true;
         }
-
+        equippedItem = null;
+        Debug.Log("Unequipped");
         return false;
+    }
+
+    public bool ConsumeItems(string name)
+    {
+        if (_items.ContainsKey(name)){
+
+            _items[name]--;
+            if (_items[name] == 0)
+            {
+                _items.Remove(name);
+            }
+
+        } else
+        {
+            Debug.Log("No items in inventory "+name);
+            return false;
+        }
+        DisplayItems();
+        return true;
     }
 }
